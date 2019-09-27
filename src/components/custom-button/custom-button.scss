@@ -13,6 +13,8 @@
   font-weight: bolder;
   border: none;
   cursor: pointer;
+  justify-content: center;
+  display: flex;
 
   &:hover {
     background-color: white;
@@ -23,5 +25,16 @@
   &.google-sign-in {
     background-color: #357ae8;
     border: none;
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
   }
 }
