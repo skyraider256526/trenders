@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { auth } from "firebase";
 
 import CartIcon from "../cart-icon/cart-icon";
-import CartDropdown from "../card-dropdown/card-dropdown";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
 
 import "./header.scss";
 
