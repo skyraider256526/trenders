@@ -14,7 +14,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
         : cartItem
     );
     console.log(result);
-    
+
     return result;
   }
 
@@ -22,15 +22,17 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 };
 
 export const removeItemFromCart = (cartItems, id) => {
-  console.log('id of item',id);
-  console.log('item',cartItems);
-  
-  for (let i = 0; i < cartItems.length; i++) {
-    const element = cartItems[i];
-    if(element.id === id){
-    console.log(...cartItems);
-    return cartItems.slice(0, i) + cartItems.slice(i,0)
-      break
+  console.log("id of item", id);
+  console.log("item", cartItems);
+  const res = cartItems
+  for (let i = 0; i < res.length; i++) {
+    const element = res[i];
+    if (element.id === id) {
+      console.log(...res);
+      res.splice(i, 1);
+      return res.slice(0,i).concat(res.slice(i+1))
+      return res
+      break;
     }
   }
-}
+};
