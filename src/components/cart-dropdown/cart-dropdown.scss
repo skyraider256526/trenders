@@ -18,6 +18,11 @@
     // to have only vertical scrollbar
     overflow-y: scroll;
   }
+  
+  .empty-message{
+    margin: 50px auto;
+    font-size: 18px;
+  }
 
   button {
     margin-top: auto;

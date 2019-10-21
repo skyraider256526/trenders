@@ -20,3 +20,20 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+export const removeItemFromCart = (cartItems, id) => {
+  console.log('id of item',id);
+  console.log('item',cartItems);
+  
+  for (let i = 0; i < cartItems.length; i++) {
+    const element = cartItems[i];
+    if(element.id === id){
+    console.log(...cartItems);
+    return cartItems.splice(i, 1)
+      // const result = cartItems
+      // return result
+      // break
+    }
+  }
+  // return result
+}
