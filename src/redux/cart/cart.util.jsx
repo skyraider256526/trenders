@@ -14,23 +14,25 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
         : cartItem
     );
     console.log(result);
-    
+
     return result;
   }
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
 
-export const removeItemFromCart = (cartItems, id) => {
-  console.log('id of item',id);
-  console.log('item',cartItems);
-  
-  for (let i = 0; i < cartItems.length; i++) {
-    const element = cartItems[i];
-    if(element.id === id){
-    console.log(...cartItems);
-    return cartItems.slice(0, i) + cartItems.slice(i,0)
-      break
-    }
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+  const existingCartItem = cartItems.find(
+    cartItem => cartItem.id === cartItemToRemove.id
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
+  } else {
+    return cartItems.map(cartItem =>
+      cartItem.id === cartItemToRemove.id
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
   }
-}
+};
