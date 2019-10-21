@@ -29,11 +29,8 @@ export const removeItemFromCart = (cartItems, id) => {
     const element = cartItems[i];
     if(element.id === id){
     console.log(...cartItems);
-    return cartItems.splice(i, 1)
-      // const result = cartItems
-      // return result
-      // break
+    return cartItems.slice(0, i) + cartItems.slice(i,0)
+      break
     }
   }
-  // return result
 }
