@@ -2,6 +2,7 @@
   "name": "trenders",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://skyraider256526.github.io/trenders",
   "engines": {
     "node": "^10.16.3"
   },
