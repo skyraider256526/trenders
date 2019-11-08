@@ -13,7 +13,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
     );
-    console.log(result);
+    // console.log(result);
 
     return result;
   }
