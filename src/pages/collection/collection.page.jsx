@@ -9,9 +9,11 @@ import CollectionItem from "../../components/collection-item/collection-item";
 import "./collection.style.scss";
 import collectionItem from "../../components/collection-item/collection-item";
 
-const CollectionPage = ({ collection }) => {
+const CollectionPage = props => {
   // console.log(collection);
-  const { title, items } = collection;
+  console.log(props);
+
+  const { title, items } = props.collection;
   return (
     <div className="collection-page">
       <h2 className="title">{title}</h2>
@@ -28,3 +30,4 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 export default connect(mapStateToProps)(CollectionPage);
+// export default CollectionPage;

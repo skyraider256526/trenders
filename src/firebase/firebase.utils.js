@@ -46,4 +46,31 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+//used to send data to firestore
+export const addCollectionAndItems = async (collection, objectsToAdd) => {
+  const collectionRef = firestore.collection(collection);
+  const batch = firestore.batch();
+  objectsToAdd.forEach(obj => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+  await batch.commit();
+};
+
+export const convertColletionToMap = collection => {
+  const transformedColletcion = collection.docs.map(doc => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    };
+  });
+  return transformedColletcion.reduce((accmulator, collection) => {
+    accmulator[collection.title.toLowerCase()] = collection;
+    return accmulator;
+  }, {});
+};
+
 export default firebase;
