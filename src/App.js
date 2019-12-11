@@ -18,6 +18,7 @@ import {
 import { setCurrentUser } from "./redux/user/user.actions";
 
 import { selectCurrentUser } from "./redux/user/user.selector";
+import { checkUserSession } from "./redux/user/user.actions";
 
 // import { selectCollectionsForPreview } from "./redux/shop/shop.selector";
 
@@ -29,26 +30,8 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser, collection } = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapshot => {
-          setCurrentUser({
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data()
-            }
-          });
-        });
-      }
-      setCurrentUser({ userAuth });
-      //used to give the array containing items and title
-      // addCollectionAndItems(
-      //   "collections",
-      //   collection.map(({ items, title }) => ({ items, title }))
-      // );
-    });
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
 
   componentWillUnmount() {
@@ -67,7 +50,7 @@ class App extends React.Component {
             exact
             path="/signin"
             render={() =>
-              this.props.currentUser == null ? (
+              this.props.currentUser ? (
                 <Redirect to="/" />
               ) : (
                 <SignInAndSignUpPage />
@@ -86,11 +69,8 @@ const mapStateToProps = createStructuredSelector({
   // collectionArray: selectCollectionsForPreview
 });
 
-const mapDispatchProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
