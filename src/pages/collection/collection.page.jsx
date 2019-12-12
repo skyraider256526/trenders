@@ -10,7 +10,7 @@ import "./collection.style.scss";
 import collectionItem from "../../components/collection-item/collection-item";
 
 const CollectionPage = props => {
-  // console.log(collection);
+  // console.log(props.collection);
   // console.log(props, "props\n");
 
   const { title, items } = props.collection;
