@@ -22,9 +22,10 @@ import { checkUserSession } from "./redux/user/user.actions";
 
 // import { selectCollectionsForPreview } from "./redux/shop/shop.selector";
 
-import "./App.css";
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/checkout/checkout";
+
+import { GlobalStyle } from "./global.styles";
 
 const App = ({ currentUser, checkUserSession }) => {
   // const unsubscribeFromAuth = null;
@@ -34,6 +35,7 @@ const App = ({ currentUser, checkUserSession }) => {
 
   return (
     <div className="App">
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />

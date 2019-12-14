@@ -19,6 +19,12 @@
     position: absolute;
     top: 255px;
     display: none;
+    @media screen and (max-width: 800px) {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0px 10px;
+    }
   }
   &:hover {
     .image {
@@ -36,5 +42,14 @@
     justify-content: space-between;
     font-size: 18px;
     margin-bottom: 1px;
+  }
+  @media screen and (max-width: 800px) {
+    width: 40vw;
+    .image {
+      opacity: unset;
+    }
+    .custom-button {
+      opacity: unset;
+    }
   }
 }
